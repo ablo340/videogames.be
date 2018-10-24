@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('home.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="text-center">
+		<h2>Liste des jeux</h2>
+	</div>
+
+	<div class="grid">
+		<div class="grid-sizer col-md-4"></div>
+
+		{% for jeu in jeux %}
+		<div class="grid-item col-md-4">
+			<div class="card grid-item-content">
+				<div class="card-body">
+				<img src="{{ jeu.image }}" alt="">
+				<h3 class="card-title">Nom : {{ jeu.nom }}</h3>
+
+				<p class="card-text">
+					Genre : {{ jeu.genre }}
+				</p>
+
+				<p class="card-text">
+					Console : {{ jeu.console }}
+				</p>
+
+				<p class="card-text">
+					Date de Sortie : {{ jeu.dateDeSortie | date('d/m/Y')}}
+				</p>
+
+				<a href="{{ path('game_show', {'id': jeu.id}) }}" class="btn btn-primary">Voir plus</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+</div>
+{% endblock %}

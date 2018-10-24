@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+        <!-- Css -->
+        <link rel="stylesheet" href="{{ asset('app.css') }}" />
+        <!-- font awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+
+        <!------ Include the above in your HEAD tag ---------->
+
+		<nav class="navbar navbar-expand-sm   navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('home') }}">games.be</a>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('add_game') }}">Ajouter un jeu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ajouter un genre</a>
+                    </li>
+                    <li class="nav-item dropdown dmenu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Menu jeux
+                    </a>
+                    <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                        <a class="dropdown-item" href="#">Link 4</a>
+                        <a class="dropdown-item" href="#">Link 5</a>
+                        <a class="dropdown-item" href="#">Link 6</a>
+                    </div>
+                    </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+                        <div class="form-group nav-link">
+                                <select name="console" class="form-control">
+                                    <option value="Ps4"> Ps4</option>
+                                    <option value="Xbox One">Xbox One</option>
+                                    <option value="Wii">Wii</option>
+                                    <option value="Nitendo Ds">Nitendo Ds</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group nav-link">
+                                    <select name="genre" class="form-control">
+                                        <option value="Aventure">Aventure</option>
+                                        <option value="Sport">Sport</option>
+                                        <option value="Combat">Combat</option>
+                                        <option value="Guerre">Guerre</option>
+                                        <option value="Course">Course</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-primary">Search</button>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </nav>
+        <!--Content-->
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+
+        <!--/footer bottom-->
+        <footer>
+            <div class="footer-bottomAlt">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <a href="https://www.facebook.com"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                            <a href="https://twitter.com"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                            <a href="https://github.com/ablo340/"><i id="social-tw" class="fa fa-github-square fa-3x social"></i></a>
+                        </div>
+                        <div class="col-lg-5">
+                            <span>&copy; Copyright 2018. All Right Reserved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ asset('app.js') }}"></script>
+    </body>
+</html>
