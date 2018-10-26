@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Repository\JeuxRepository;
+use App\Repository\ConsoleRepository;
 use App\Entity\Jeux;
+use App\Entity\Console;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Form\JeuxType;
@@ -17,7 +19,7 @@ class AddGameController extends AbstractController
      * @Route("add/game", name="add_game")
      * @Route("add/game/{id}/edit", name="edit_game")
      */
-    public function AddGame(Jeux $jeu = null, Request $request, ObjectManager $manager)
+    public function Game(Jeux $jeu = null, Request $request, ObjectManager $manager)
     {
 
         if(!$jeu){

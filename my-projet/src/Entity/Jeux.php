@@ -29,12 +29,6 @@ class Jeux
     private $genre;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=3, minMessage="Le nom doit avoir 3 caractères au minimum")
-     */
-    private $console;
-
-    /**
      * @ORM\Column(type="text")
      * @Assert\Length(min=10, minMessage="Le nom doit avoir 10 caractères au minimum")
      */
@@ -50,6 +44,12 @@ class Jeux
      * @ORM\Column(type="datetime")
      */
     private $dateDeSortie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Console", inversedBy="jeux")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $Console;
 
     public function getId(): ?int
     {
@@ -76,18 +76,6 @@ class Jeux
     public function setGenre(string $genre): self
     {
         $this->genre = $genre;
-
-        return $this;
-    }
-
-    public function getConsole(): ?string
-    {
-        return $this->console;
-    }
-
-    public function setConsole(string $console): self
-    {
-        $this->console = $console;
 
         return $this;
     }
@@ -124,6 +112,18 @@ class Jeux
     public function setDateDeSortie(\DateTimeInterface $dateDeSortie): self
     {
         $this->dateDeSortie = $dateDeSortie;
+
+        return $this;
+    }
+
+    public function getConsole(): ?Console
+    {
+        return $this->Console;
+    }
+
+    public function setConsole(?Console $Console): self
+    {
+        $this->Console = $Console;
 
         return $this;
     }

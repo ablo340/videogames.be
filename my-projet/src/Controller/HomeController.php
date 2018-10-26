@@ -13,9 +13,11 @@ class HomeController extends AbstractController
      * @Route("/", name="home")
      */
     //show all games
-    public function home(JeuxRepository $repo)
+    public function home(JeuxRepository $repoJeu)
     {
-        $jeux = $repo->findAll();
+        //Find all games
+        $jeux = $repoJeu->findAll();
+
         return $this->render('home/home.html.twig', [
             'jeux' => $jeux
         ]);
@@ -25,7 +27,7 @@ class HomeController extends AbstractController
      * @Route("/game/{id}", name="game_show")
      */
     //show one game
-    public function show(Jeux $jeux)
+    public function showOneGame(Jeux $jeux)
     {
         return $this->render('home/jeux.html.twig', [
             'jeux' => $jeux

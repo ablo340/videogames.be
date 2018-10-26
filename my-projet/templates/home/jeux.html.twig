@@ -16,13 +16,13 @@
                 </div>
                 <div class="col-md form-group ">
                     <p><h4>Genre : </h4>{{ jeux.genre }}</p>
-                    <p><h4>Console : </h4>{{ jeux.console }}</p>
+                    <p><h4>Console : </h4>{{ jeux.console.nom }}</p>
                     <p><h4>commentaire : </h4>{{ jeux.commentaire | raw }}</p>
                 </div>
             </div>
 
             <a href="{{ path('edit_game', {'id': jeux.id}) }}" class="btn btn-primary">Modifier</a>
-            <a href="{{ path('edit_game', {'id': jeux.id}) }}" class="btn btn-primary">Supprimer</a>
+            <a href="{{ path('delete_game', {'id': jeux.id}) }}" class="btn btn-primary">Supprimer</a>
         </div>
     </div>
 </div>

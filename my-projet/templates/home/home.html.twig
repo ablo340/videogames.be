@@ -2,13 +2,9 @@
 
 {% block title %}Games{% endblock %}
 
-{% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('home.css') }}" />
-{% endblock %}
-
 {% block body %}
-<div class="container">
-	<div class="text-center">
+<div class="container pt60 pb60">
+	<div class="text-center mb60">
 		<h2>Liste des jeux</h2>
 	</div>
 
@@ -20,14 +16,14 @@
 			<div class="card grid-item-content">
 				<div class="card-body">
 				<img src="{{ jeu.image }}" alt="">
-				<h3 class="card-title">Nom : {{ jeu.nom }}</h3>
+				<h3 class="card-title">{{ jeu.nom }}</h3>
 
 				<p class="card-text">
 					Genre : {{ jeu.genre }}
 				</p>
 
 				<p class="card-text">
-					Console : {{ jeu.console }}
+					Console : {{ jeu.console.nom }}
 				</p>
 
 				<p class="card-text">
@@ -40,6 +36,5 @@
 		</div>
 		{% endfor %}
 	</div>
-
 </div>
 {% endblock %}

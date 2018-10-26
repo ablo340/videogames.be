@@ -30,48 +30,22 @@
                         <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('add_game') }}">Ajouter un jeu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ajouter un genre</a>
+                        <a class="nav-link" href="{{ path('consoles') }}">Consoles</a>
                     </li>
                     <li class="nav-item dropdown dmenu">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         Menu jeux
                     </a>
                     <div class="dropdown-menu sm-menu">
-                        <a class="dropdown-item" href="#">Link 1</a>
-                        <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" href="#">Link 3</a>
-                        <a class="dropdown-item" href="#">Link 4</a>
-                        <a class="dropdown-item" href="#">Link 5</a>
-                        <a class="dropdown-item" href="#">Link 6</a>
+                        <a class="dropdown-item" href="{{ path('add_game') }}">Ajouter un jeu</a>
+                        <a class="dropdown-item" href="{{ path('add_console') }}">Ajouter une console</a>
                     </div>
                     </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
-                        <div class="form-group nav-link">
-                                <select name="console" class="form-control">
-                                    <option value="Ps4"> Ps4</option>
-                                    <option value="Xbox One">Xbox One</option>
-                                    <option value="Wii">Wii</option>
-                                    <option value="Nitendo Ds">Nitendo Ds</option>
-                                </select>
-                            </div>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 
-                            <div class="form-group nav-link">
-                                    <select name="genre" class="form-control">
-                                        <option value="Aventure">Aventure</option>
-                                        <option value="Sport">Sport</option>
-                                        <option value="Combat">Combat</option>
-                                        <option value="Guerre">Guerre</option>
-                                        <option value="Course">Course</option>
-                                    </select>
-                                </div>
-                                <button type="button" class="btn btn-primary">Search</button>
-                    </form>
+                    <a href="{{ path('search') }}" class="btn btn-primary">Rechercher</a>
                     
                 </div>
 
@@ -99,6 +73,7 @@
             </div>
         </footer>
         
+        <!-- Script -->
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="{{ asset('app.js') }}"></script>

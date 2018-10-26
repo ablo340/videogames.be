@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Jeux;
+use App\Entity\Console;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class JeuxType extends AbstractType
 {
@@ -24,7 +26,10 @@ class JeuxType extends AbstractType
                     'Sport' => 'Sport',
                 ),
             ))
-            ->add('console')
+            ->add('console', EntityType::class, [
+                'class' => Console::class,
+                'choice_label' => 'nom'
+            ])
             ->add('image')
             ->add('dateDeSortie', DateType::class)
             ->add('commentaire')
