@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games{% endblock %}
+
+{% block body %}
+<div class="container pt60 pb60">
+	<div class="text-center mb60">
+		<h1>{{ consoles.nom }}</h1>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class='row'>
+                <div class="col-md form-group ">
+                    <img src="{{ consoles.image }}" alt="">
+                </div>
+                <div class="col-md form-group ">
+                    <p><h4>Fabricant : </h4>{{ consoles.fabricant }}</p>
+                    <p><h4>Description : </h4>{{ consoles.description | raw }}</p>
+                </div>
+            </div>
+
+            <a href="{{ path('edit_console', {'id': consoles.id}) }}" class="btn btn-primary">Modifier</a>
+            <a href="{{ path('delete_console', {'id': consoles.id}) }}" class="btn btn-primary">Supprimer</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

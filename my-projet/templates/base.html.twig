@@ -42,10 +42,12 @@
                     </div>
                     </li>
                     </ul>
-
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-
-                    <a href="{{ path('search') }}" class="btn btn-primary">Rechercher</a>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <a href="#" class="btn btn-primary mr-sm-2">Rechercher</a>
+                        <a href="{{ path('filter') }}" class="btn btn-primary mr-sm-2">Filtrer</a>
+                    </form>
+                    
                     
                 </div>
 

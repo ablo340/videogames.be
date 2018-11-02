@@ -5,36 +5,36 @@
 {% block body %}
 <div class="container pt60 pb60">
 	<div class="text-center mb60">
-		<h1>Ajouter un jeu</h1>
+		<h1>Ajouter une console</h1>
 	</div>
 
     <!-- Form-->
     <div class="row">
         <div class="col-lg-8 mb-4">
             
-            {{ form_start(formJeu) }}
+            {{ form_start(formConsole) }}
             <div class='row'>
                 <div class="col-md form-group ">
-                    {{ form_row(formJeu.nom, {'attr': {'placeholder': "Nom du jeu"}}) }}
+                    {{ form_row(formConsole.nom, {'attr': {'placeholder': "Nom de la console"}}) }}
                 </div>
                 <div class="col-md form-group ">
-                    {{ form_row(formJeu.genre) }}
+                    {{ form_row(formConsole.fabricant) }}
                 </div>
                 <div class="col-md form-group ">
-                    {{ form_row(formJeu.console) }}
+                    {{ form_row(formConsole.prix, {'attr': {'placeholder': "Le prix en Euro"}}) }}
                 </div>
             </div>
             <div class='row'>
                 <div class="col-md form-group ">
-                    {{ form_row(formJeu.image, {'attr': {'placeholder': "L'Url de l'image"}}) }}
+                    {{ form_row(formConsole.image, {'attr': {'placeholder': "L'Url de l'image"}}) }}
                 </div>
                 <div class="col-md form-group ">
-                    {{ form_row(formJeu.dateDeSortie) }}
+                    {{ form_row(formConsole.dateDeSortie) }}
                 </div>
             </div>
             <div class='row'>
                 <div class="col-md form-group ">
-                    {{ form_row(formJeu.commentaire, {'attr': {'placeholder': "Un commentaire sur le jeu", 'cols': "30", 'rows': "7"}} 
+                    {{ form_row(formConsole.description, {'attr': {'placeholder': "Une description de la console", 'cols': "30", 'rows': "7"}} 
                     )}}
                 </div>
             </div>
@@ -44,11 +44,11 @@
                 {% if editMode %}
                     Enregistrer
                 {% else %}
-                    Ajouter le jeu
+                    Ajouter la console
                 {% endif %}
             </button>
 
-            {{ form_end(formJeu) }}
+            {{ form_end(formConsole) }}
         </div>
     </div>
 </div>

@@ -5,10 +5,9 @@
 {% block body %}
 <div class="container pt60 pb60">
 	<div class="text-center mb60">
-		<h1>Ajouter un jeu</h1>
-	</div>
-
-    <!-- Form-->
+		<h2>Recherche filtree</h2>
+    </div>
+        <!-- Form-->
     <div class="row">
         <div class="col-lg-8 mb-4">
             
@@ -24,32 +23,13 @@
                     {{ form_row(formJeu.console) }}
                 </div>
             </div>
-            <div class='row'>
-                <div class="col-md form-group ">
-                    {{ form_row(formJeu.image, {'attr': {'placeholder': "L'Url de l'image"}}) }}
-                </div>
-                <div class="col-md form-group ">
-                    {{ form_row(formJeu.dateDeSortie) }}
-                </div>
-            </div>
-            <div class='row'>
-                <div class="col-md form-group ">
-                    {{ form_row(formJeu.commentaire, {'attr': {'placeholder': "Un commentaire sur le jeu", 'cols': "30", 'rows': "7"}} 
-                    )}}
-                </div>
-            </div>
 
             <!-- form button -->
             <button type="submit" class="btn btn-primary">
-                {% if editMode %}
-                    Enregistrer
-                {% else %}
-                    Ajouter le jeu
-                {% endif %}
+                RECHERCHER
             </button>
-
             {{ form_end(formJeu) }}
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
