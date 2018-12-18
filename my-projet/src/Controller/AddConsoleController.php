@@ -36,6 +36,8 @@ class AddConsoleController extends AbstractController
             $manager->persist($console); //prepare game
             $manager->flush();
 
+            $this->addFlash('notice', 'la console a bien été ajoutée');
+
             return $this->redirectToRoute('console_show', [
                 'id' => $console->getId()
             ]);

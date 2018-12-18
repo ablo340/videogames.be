@@ -40,6 +40,8 @@ class AddGameController extends AbstractController
             $manager->persist($jeu); //prepare game
             $manager->flush();
 
+            $this->addFlash('notice', 'le jeu a bien été ajouté');
+
             return $this->redirectToRoute('game_show', [
                 'id' => $jeu->getId()
             ]);
