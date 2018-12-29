@@ -1,0 +1,34 @@
+<!--Navbar.-->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" routerLink="">
+    <img src="https://24o4jw8cb0e2pym4i236aag1-wpengine.netdna-ssl.com/wp-content/uploads/2018/06/video-games.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Video Games
+  </a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+<!--Navs-->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" id="games-tab" data-toggle="tab" routerLink="games" role="tab" aria-controls="games">Jeux</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" id="consoles-tab" data-toggle="tab" routerLink="consoles" role="tab" aria-controls="consoles">Consoles</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" id="new_consoles-tab" data-toggle="tab" routerLink="consoles/news" role="tab" aria-controls="new_consoles">Ajouter une console</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" id="new_games-tab" data-toggle="tab" routerLink="games/news" role="tab" aria-controls="new_games">Ajouter un jeu</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

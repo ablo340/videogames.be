@@ -1,0 +1,77 @@
+<div class="tab-pane fade show active" id="new_game" role="tabpanel" aria-labelledby="new_game-tab">
+  <form (ngSubmit)= "onSubmit(form)" #form= "ngForm">
+    <div class="form-group row">
+      <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+      <div *ngIf="add" class="col-sm-10">
+        <input type="text" class="form-control" id="nom" placeholder="Nom du jeu" name="nom" ngModel required>
+      </div>
+      <div *ngIf="!add" class="col-sm-10">
+        <input type="text" class="form-control" id="nom" placeholder="Nom du jeu" name="nom" [(ngModel)]="game.nom" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="genre" class="col-sm-2 col-form-label">Genre</label>
+      <div *ngIf="add" class="col-sm-10">
+        <select class="form-control" id="genre" name="genre" ngModel required>
+          <option value= "Aventure">Aventure</option>
+          <option value= "Course">Course</option>
+          <option value="Combat">Combat</option>
+          <option value = "Guerre">Guerre</option>
+          <option value= "Sport">Sport</option>
+        </select>
+      </div>
+      <div *ngIf="!add" class="col-sm-10">
+        <select class="form-control" id="genre" name="genre" [(ngModel)]="game.genre" required>
+          <option value= "Aventure">Aventure</option>
+          <option value= "Course">Course</option>
+          <option value="Combat">Combat</option>
+          <option value = "Guerre">Guerre</option>
+          <option value= "Sport">Sport</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="console_id" class="col-sm-2 col-form-label">Console</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="console_id" name="console_id" ngModel required>
+          <option *ngFor="let console of consoles" value= "{{console.id}}" >{{console.nom}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="image" class="col-sm-2 col-form-label">Image</label>
+      <div *ngIf="add" class="col-sm-10">
+        <input type="text" class="form-control" id="image" placeholder="Url de l'image" name="image" ngModel required>
+      </div>
+      <div *ngIf="!add" class="col-sm-10">
+        <input type="text" class="form-control" id="image" placeholder="Url de l'image" name="image" [(ngModel)]="game.image" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="date_de_sortie" class="col-sm-2 col-form-label">Date de sortie</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="date_de_sortie" name="date_de_sortie" ngModel required>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="commentaire" class="col-sm-2 col-form-label">Commentaire</label>
+      <div *ngIf="add" class="col-sm-10">
+        <textarea type="textarea" class="form-control" id="commentaire" rows="6" placeholder="Un Commentaire sur le jeu" name="commentaire" ngModel required></textarea>
+      </div>
+      <div *ngIf="!add" class="col-sm-10">
+        <textarea type="textarea" class="form-control" id="commentaire" rows="6" placeholder="Un Commentaire sur le jeu" name="commentaire" [(ngModel)]="game.commentaire" required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary" [disabled]=form.invalid>Valider</button>
+      </div>
+    </div>
+  </form>
+</div>

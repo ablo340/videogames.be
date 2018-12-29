@@ -1,0 +1,19 @@
+<div class="tab-pane fade show active" id="games" role="tabpanel" aria-labelledby="games-tab">
+  <h2>Liste des jeux</h2>
+
+  <div class="card-deck">
+    <div class="card" *ngFor="let game of games">
+      <div class="card-body">
+        <button type="button" class="close" aria-label="Close" (click)="onDeleteGame(game.id)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <img class="card-img-top" src="{{ game.image }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{game.nom}}</h5>
+        <h4 class="card-text"><small class="text-muted">{{game.genre}}</small></h4>
+        <button class="btn btn-primary" (click)="onViewGame(game.id)">Voir plus...</button>
+      </div>
+    </div>
+  </div>
+</div>

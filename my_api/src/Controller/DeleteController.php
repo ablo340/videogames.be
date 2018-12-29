@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Jeux;
 use App\Entity\Console;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,9 +23,7 @@ class DeleteController extends AbstractController
 
         $manager->remove($jeu);
         $manager->flush();
-
-        return $this->redirectToRoute('api_home'
-        );
+        return new Response('', Response::HTTP_CREATED);
     }
 
     /**
@@ -35,7 +35,6 @@ class DeleteController extends AbstractController
         $manager->remove($console);
         $manager->flush();
 
-        return $this->redirectToRoute('api_consoles'
-        );
+        return new Response('', Response::HTTP_CREATED);
     }
 }
