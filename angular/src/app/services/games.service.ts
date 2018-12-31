@@ -1,7 +1,7 @@
+// game.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Game } from '../models/Game.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class GamesService {
   }
 
   //get one game
-  getServicesSingleGame(id: number): Observable<Game>{
+  getServicesSingleGame(id: number): Observable<any>{
     return this.http.get(this.baseUrl + 'game/' + id );
   }
 

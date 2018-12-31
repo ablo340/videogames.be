@@ -23,14 +23,6 @@ class AddConsoleController extends AbstractController
      */
     public function Add_Console(Request $request)
     {
-        if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
-            $response = new Response();
-            $response->headers->set('Content-Type', 'application/text');
-            $response->headers->set('Acces-Control-Allow-Origin', '*');
-            $response->headers->set("Acces-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-            $response->headers->set('Acces-Control-Allow-Headers', 'Content-Type', true);
-            return $response;
-        }
 
         try
         {
@@ -46,7 +38,7 @@ class AddConsoleController extends AbstractController
             $console->setPrix($content["prix"]);
             $console->setImage($content["image"]);
             $date = $content["date_de_sortie"];
-            $console->setDateDeSortie(\DateTime::createFromFormat('Y-m-d', $date));
+            $console->setDateDeSortie($date);
             $console->setDescription($content["description"]);
             
             $em = $this->getDoctrine()->getManager();
@@ -80,7 +72,7 @@ class AddConsoleController extends AbstractController
             $console->setPrix($content["prix"]);
             $console->setImage($content["image"]);
             $date = $content["date_de_sortie"];
-            $console->setDateDeSortie(\DateTime::createFromFormat('Y-m-d', $date));
+            $console->setDateDeSortie($date);
             $console->setDescription($content["description"]);
             
             $em = $this->getDoctrine()->getManager();

@@ -1,8 +1,12 @@
+<!-- games-list.component.html -->
+<form class="form-inline" (ngSubmit)= "onSubmit(form)" #form= "ngForm">
+  <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" id="search" name="search" [(ngModel)] = "searchName">
+</form>
 <div class="tab-pane fade show active" id="games" role="tabpanel" aria-labelledby="games-tab">
   <h2>Liste des jeux</h2>
 
   <div class="card-deck">
-    <div class="card" *ngFor="let game of games">
+    <div class="card" *ngFor="let game of games | gameFilter: searchName">
       <div class="card-body">
         <button type="button" class="close" aria-label="Close" (click)="onDeleteGame(game.id)">
           <span aria-hidden="true">&times;</span>

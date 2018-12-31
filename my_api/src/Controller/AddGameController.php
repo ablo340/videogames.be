@@ -41,7 +41,7 @@ class AddGameController extends AbstractController
             $jeu->setCommentaire($content["commentaire"]);
             $jeu->setImage($content["image"]);
             $date = $content["date_de_sortie"];
-            $jeu->setDateDeSortie(\DateTime::createFromFormat('Y-m-d', $date));
+            $jeu->setDateDeSortie($date);
             $jeu->setConsole($console);
             
             $em = $this->getDoctrine()->getManager();
@@ -80,7 +80,7 @@ class AddGameController extends AbstractController
             $jeu->setCommentaire($content["commentaire"]);
             $jeu->setImage($content["image"]);
             $date = $content["date_de_sortie"];
-            $jeu->setDateDeSortie(\DateTime::createFromFormat('Y-m-d', $date));
+            $jeu->setDateDeSortie($date);
             $jeu->setConsole($console);
             
             $em = $this->getDoctrine()->getManager();

@@ -1,3 +1,5 @@
+// games-list.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GamesService } from '../services/games.service';
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 export class GamesListComponent implements OnInit {
 
   games: Observable<Game[]>;
+  searchName: String;
 
   constructor(private GamesService: GamesService,
               private router: Router) { }

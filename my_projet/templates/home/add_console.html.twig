@@ -1,3 +1,4 @@
+<!-- add_console.html.twig -->
 {% extends 'base.html.twig' %}
 
 {% block title %}Games{% endblock %}
@@ -18,7 +19,7 @@
                     {{ form_row(formConsole.nom, {'attr': {'placeholder': "Nom de la console"}}) }}
                 </div>
                 <div class="col-md form-group ">
-                    {{ form_row(formConsole.fabricant) }}
+                    {{ form_row(formConsole.fabricant, {'attr': {'placeholder': "Le nom du fabricant"}}) }}
                 </div>
                 <div class="col-md form-group ">
                     {{ form_row(formConsole.prix, {'attr': {'placeholder': "Le prix en Euro"}}) }}
@@ -29,7 +30,7 @@
                     {{ form_row(formConsole.image, {'attr': {'placeholder': "L'Url de l'image"}}) }}
                 </div>
                 <div class="col-md form-group ">
-                    {{ form_row(formConsole.dateDeSortie) }}
+                    {{ form_row(formConsole.dateDeSortie, {'attr': {'placeholder': "format date: j/m/a"}}) }}
                 </div>
             </div>
             <div class='row'>

@@ -1,3 +1,5 @@
+// game-form.component.ts -->
+
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/app/models/Game.model';
 import { Console } from 'src/app/models/Console.model';
@@ -47,6 +49,11 @@ export class GameFormComponent implements OnInit {
   onSubmit(form: NgForm){
 
     if(this.add == true){// add game
+
+      if(form.value['console_id'] == undefined || form.value['console_id'] == null){ // if there is no console in db
+        this.router.navigate(['/consoles/news']);
+      }
+
       let jeu: any;
       jeu = {
         nom: form.value['nom'],
@@ -56,6 +63,7 @@ export class GameFormComponent implements OnInit {
         date_de_sortie: form.value['date_de_sortie'],
         commentaire: form.value['commentaire']
       };
+
 
       this.GamesServices.addServicePost(jeu).subscribe(( result => {
         this.router.navigate(['/games']);

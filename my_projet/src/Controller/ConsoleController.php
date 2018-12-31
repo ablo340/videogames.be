@@ -12,8 +12,7 @@ class ConsoleController extends AbstractController
     /**
      * @Route("/consoles", name="consoles")
      */
-    //show all consoles
-    public function Consoles(ConsoleRepository $repoConsole)
+    public function Consoles(ConsoleRepository $repoConsole) //show all consoles
     {
         //Find all games
         $consoles = $repoConsole->findAll();
@@ -26,8 +25,7 @@ class ConsoleController extends AbstractController
     /**
      * @Route("/console/{id}", name="console_show")
      */
-    //show one console
-    public function showOneConsole(Console $consoles)
+    public function showOneConsole(Console $consoles) //show one console
     {
         return $this->render('home/console.html.twig', [
             'consoles' => $consoles

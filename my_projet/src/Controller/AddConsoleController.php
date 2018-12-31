@@ -22,21 +22,17 @@ class AddConsoleController extends AbstractController
             $console = new Console;
         }
 
-        //form to create or set a game
+        //form to create or set a console
         $form = $this->createForm(ConsoleType::class, $console);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted()){
 
-            if(!$console->getId()){
-                $console->setDateDeSortie(new \DateTime()); //set date
-            }
-
             $manager->persist($console); //prepare game
             $manager->flush();
 
-            $this->addFlash('notice', 'la console a bien été ajoutée');
+            $this->addFlash('notice', 'la console a bien été ajoutée'); // flash message
 
             return $this->redirectToRoute('console_show', [
                 'id' => $console->getId()

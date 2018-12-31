@@ -1,3 +1,5 @@
+// single-game.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from 'src/app/services/games.service';
 import { Game } from 'src/app/models/Game.model';

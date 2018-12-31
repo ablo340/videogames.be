@@ -1,8 +1,13 @@
+<!-- consoles-list.component.html -->
+
+<form class="form-inline" (ngSubmit)= "onSubmit(form)" #form= "ngForm">
+  <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" id="search" name="search" [(ngModel)] = "searchName">
+</form>
 <div class="tab-pane fade show active" id="consoles" role="tabpanel" aria-labelledby="consoles-tab">
   <h2>Liste des consoles</h2>
 
   <div class="card-deck">
-    <div class="card" *ngFor="let console of consoles">
+    <div class="card" *ngFor="let console of consoles | consoleFilter: searchName">
       <div class="card-body">
         <button type="button" class="close" aria-label="Close" (click)="onDeleteConsole(console.id)">
           <span aria-hidden="true">&times;</span>

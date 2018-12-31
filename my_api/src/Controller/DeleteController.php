@@ -11,6 +11,7 @@ use App\Entity\Jeux;
 use App\Entity\Console;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Repository\JeuxRepository;
 
 class DeleteController extends AbstractController
 {
@@ -29,9 +30,21 @@ class DeleteController extends AbstractController
     /**
      * @Route("api/delete/console/{id}", name="api_delete_console", methods={"DELETE"})
      */
-    public function DeleteConsole(Console $console, Request $request, ObjectManager $manager)
+    public function DeleteConsole(JeuxRepository $repoJeu, Console $console, Request $request, ObjectManager $manager)
     {
+        //Find all games
+        $jeux = $repoJeu->findAll();
 
+        //delete the game bound
+        foreach($jeux as $jeu){
+            $jeu_Idconsole = $jeu->getConsole()->getId();
+            if( $jeu_Idconsole == $console->getId() ){
+                $manager->remove($jeu);
+                $manager->flush();
+            }
+        }
+
+        //delete console
         $manager->remove($console);
         $manager->flush();
 

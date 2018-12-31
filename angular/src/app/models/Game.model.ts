@@ -1,5 +1,6 @@
+// Game.model.ts
 export class Game {
-
+    nom: String
     constructor(nom: String,    
         genre: String,
         commentaire: String,

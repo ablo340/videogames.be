@@ -1,3 +1,5 @@
+// consoles-list.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConsolesService } from '../services/consoles.service';
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 export class ConsolesListComponent implements OnInit {
 
   consoles: Observable<Console[]>;
+  searchName: String;
 
   constructor(private ConsolesService: ConsolesService,
               private router: Router) { }

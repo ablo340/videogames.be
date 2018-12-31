@@ -41,7 +41,7 @@ class Jeux
     private $image;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255)
      */
     private $dateDeSortie;
 
@@ -104,12 +104,12 @@ class Jeux
         return $this;
     }
 
-    public function getDateDeSortie(): ?\DateTimeInterface
+    public function getDateDeSortie(): ?string
     {
         return $this->dateDeSortie;
     }
 
-    public function setDateDeSortie(\DateTimeInterface $dateDeSortie): self
+    public function setDateDeSortie(string $dateDeSortie): self
     {
         $this->dateDeSortie = $dateDeSortie;
 

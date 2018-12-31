@@ -1,3 +1,4 @@
+// app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,6 +17,8 @@ import { SingleConsoleComponent } from './consoles-list/single-console/single-co
 import { FourOnehundredFourComponent } from './four-onehundred-four/four-onehundred-four.component';
 import { ConsolesService } from './services/consoles.service';
 import { DeleteComponent } from './delete/delete.component';
+import { GameFilterPipe } from './games-list/game-filter.pipe';
+import { ConsoleFilterPipe } from './consoles-list/console-filter.pipe';
 
 const appRoutes: Routes = [
   {path: 'games', component: GamesListComponent},
@@ -41,7 +44,9 @@ const appRoutes: Routes = [
     ConsoleFormComponent,
     SingleConsoleComponent,
     FourOnehundredFourComponent,
-    DeleteComponent
+    DeleteComponent,
+    GameFilterPipe,
+    ConsoleFilterPipe
   ],
   imports: [
     BrowserModule,

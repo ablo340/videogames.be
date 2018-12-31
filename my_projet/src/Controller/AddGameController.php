@@ -33,14 +33,15 @@ class AddGameController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-            if(!$jeu->getId()){
-                $jeu->setDateDeSortie(new \DateTime()); //set date
+            if($jeu->getConsole() == null){// if there is no console in db
+                $this->addFlash('notice', "Il n'y a pas de console. Veuillez ajouter d'abord une console" );
+                return $this->redirectToRoute('add_game');
             }
 
             $manager->persist($jeu); //prepare game
             $manager->flush();
 
-            $this->addFlash('notice', 'le jeu a bien été ajouté');
+            $this->addFlash('notice', 'le jeu a bien été ajouté'); // flash message
 
             return $this->redirectToRoute('game_show', [
                 'id' => $jeu->getId()

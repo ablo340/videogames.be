@@ -1,5 +1,6 @@
+// Console.model.ts
 export class Console {
-
+    nom: string;
     constructor(nom: string,
         fabricant: string,
         prix: number,

@@ -1,3 +1,4 @@
+<!-- console_list.html.twig -->
 {% extends 'base.html.twig' %}
 
 {% block title %}Games{% endblock %}
@@ -5,6 +6,11 @@
 {% block body %}
 <div class="container pt60 pb60">
 	<div class="text-center mb60">
+		{% for flashMessage in app.session.flashBag.get('suppression') %}
+		<div class="isa_success">
+			{{ flashMessage }}
+		</div>
+		{% endfor %}
 		<h2>Liste des consoles</h2>
 	</div>
 
@@ -27,7 +33,7 @@
 				</p>
 
 				<p class="card-text">
-					Date de Sortie : {{ console.dateDeSortie | date('d/m/Y')}}
+					Date de Sortie : {{ console.dateDeSortie }}
 				</p>
 
 				<a href="{{ path('console_show', {'id': console.id}) }}" class="btn btn-primary">Voir plus</a>

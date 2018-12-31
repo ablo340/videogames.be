@@ -1,13 +1,15 @@
+<!-- single-console.component.html -->
+
 <h1>{{console.nom}}</h1>
 <div class="row">
   <div class="col-9"><img src="{{console.image}}" class="img-fluid" alt="Responsive image"></div>
   <div class="col-4">
-    <h3>Fabricant:</h3> {{console.fabricant}}<br>
-    <h3>Prix:</h3> {{console.prix}} Euros<br>
-    <h3>Date de sortie: {{console.dateDeSortie}} </h3>
+    <h3>Fabricant:</h3><h6>{{console.fabricant}}</h6><br>
+    <h3>Prix:</h3><h6> {{console.prix}} Euros </h6><br>
+    <h3>Date de sortie: </h3> <h6> {{console.dateDeSortie}} </h6>
   </div>
   <div class="col-6">
-    <h3>Description</h3><br>{{console.description}}
+    <h3>Description</h3><br><h6>{{console.description}} </h6>
   </div>
   <div class="col-4">
     <a (click)="onEditConsole(console.id)" class="btn btn-primary">Modifier</a>

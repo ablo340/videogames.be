@@ -1,13 +1,15 @@
+<!-- // single-game.component.html -->
+
 <h1>{{game.nom}}</h1>
 <div class="row">
   <div class="col-9"><img src="{{game.image}}" class="img-fluid" alt="Responsive image"></div>
   <div class="col-4">
-    <h3>Genre:</h3> {{game.genre}}<br>
-    <h3>Console:  </h3>
-    <h3>Date de sortie: {{game.dateDeSortie}}</h3>
+    <h3>Genre:</h3> <h6>{{game.genre}} </h6><br>
+    <h3>Console: </h3><h6>{{game.Console.nom}}</h6>
+    <h3>Date de sortie:</h3> <h6>{{game.dateDeSortie}} </h6>
   </div>
   <div class="col-6">
-    <h3>commentaire: </h3><br>{{game.commentaire}}
+    <h3>commentaire: </h3><br> <h6>{{game.commentaire}}</h6>
   </div>
   <div class="col-4">
     <a (click)="onEditGame(game.id)" class="btn btn-primary">Modifier</a>

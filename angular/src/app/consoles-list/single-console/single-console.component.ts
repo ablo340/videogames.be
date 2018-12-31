@@ -1,3 +1,5 @@
+// single-console.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConsolesService } from 'src/app/services/consoles.service';

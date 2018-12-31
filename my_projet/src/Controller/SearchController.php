@@ -15,74 +15,31 @@ use App\Entity\Console;
 class SearchController extends AbstractController
 {
     /**
-     * @Route("/filter", name="filter")
+     * @Route("/recherche", name="Search")
      */
     public function Filter(ConsoleRepository $repoConsole, JeuxRepository $repoJeu, Request $request)
     {
-        //Find all games
-        $consoles = $repoConsole->findAll();
 
-        $form = $this->createFormBuilder()
-                     ->add('genre', ChoiceType::class, array(
-                        'choices' => array(
-                            'Aventure' => 'Aventure',
-                            'Course' => 'Course',
-                            'Combat' => 'Combat',
-                            'Guerre' => 'Guerre',
-                            'Sport' => 'Sport',
-                        ),
-                    ))
-                     ->add('console', EntityType::class, [
-                        'class' => Console::class,
-                        'choice_label' => 'nom'
-                    ])
-                     ->add('nom')
-                     ->getForm();
+        $repository = $this->getDoctrine()->getRepository(Jeux::class);
+
+        $nom = $request->query->get('recherche'); //item searched
+
+        $jeux = $repository->findOneBy([ // searching item
+            'nom' => $nom
+        ]);
         
-        if($form->isSubmitted()){
-            $data = $request->getContent();
-            $content = json_decode($data, true);
+        if($jeux != null){
+            $this->addFlash('notice', "Resultat de la rechercher"); //flash message
 
-            $repository = $this->getDoctrine()->getRepository(Jeux::class);
-
-                
-
-            $jeux = $repository->findOneBy([
-                'nom' => 'FIFA 19'
-            ]);
-
-
-            return $this->redirectToRoute('game_show', [
-                'id' => $jeux->getId(),
+            return $this->render('home/search.html.twig', [
                 'jeux' => $jeux
             ]);
         }
-        
-
-        return $this->render('home/search.html.twig', [
-            'formJeu' => $form->CreateView(),
-            'consoles' => $consoles
-        ]);
+        else{
+            $this->addFlash('notice', "le jeu que vous chercher n'existe pas"); //flash message
+            return $this->render('home/home.html.twig', [
+                'jeux' => $jeux
+            ]);
+        }
     }
-
-    /**
-     * @Route("/search/filter", name="search_filter")
-     */
-    public function SearchFilter(ConsoleRepository $repoConsole, JeuxRepository $repoJeu)
-    {
-        //Find all games
-        $consoles = $repoConsole->findAll();
-
-        $jeux = $repoJeu->findOneBy([
-            'nom' => $_GET['nom'],
-            'Console' => $_GET['console'],
-            'genre' => $_GET['genre']
-        ]);
-
-        return $this->render('home/home.html.twig', [
-            'consoles' => $consoles,
-            'jeux' => $jeux
-        ]);
-    }
-    
 }

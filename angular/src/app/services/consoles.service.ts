@@ -1,7 +1,7 @@
+// console.service.ts
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Console } from '../models/Console.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class ConsolesService {
   }
 
   //get one console
-  getServicesSingleConsoles(id: number): Observable<Console>{
+  getServicesSingleConsoles(id: number): Observable<any>{
     return this.http.get(this.baseUrl + 'console/' + id );
   }
 
