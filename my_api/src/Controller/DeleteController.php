@@ -17,7 +17,6 @@ class DeleteController extends AbstractController
 {
     /**
      * @Route("api/delete/game/{id}", name="api_delete_game", methods={"DELETE"})
-     * @Method("DELETE")
      */
     public function DeleteGame(Jeux $jeu, Request $request, ObjectManager $manager)
     {

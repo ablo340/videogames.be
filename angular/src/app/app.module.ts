@@ -16,7 +16,6 @@ import { ConsoleFormComponent } from './consoles-list/console-form/console-form.
 import { SingleConsoleComponent } from './consoles-list/single-console/single-console.component';
 import { FourOnehundredFourComponent } from './four-onehundred-four/four-onehundred-four.component';
 import { ConsolesService } from './services/consoles.service';
-import { DeleteComponent } from './delete/delete.component';
 import { GameFilterPipe } from './games-list/game-filter.pipe';
 import { ConsoleFilterPipe } from './consoles-list/console-filter.pipe';
 
@@ -44,7 +43,6 @@ const appRoutes: Routes = [
     ConsoleFormComponent,
     SingleConsoleComponent,
     FourOnehundredFourComponent,
-    DeleteComponent,
     GameFilterPipe,
     ConsoleFilterPipe
   ],
