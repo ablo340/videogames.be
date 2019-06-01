@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GamesService } from 'src/app/services/games.service';
 import { ConsolesService } from 'src/app/services/consoles.service';
 import { NgForm } from '@angular/forms';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-game-form',
@@ -22,7 +22,9 @@ export class GameFormPage implements OnInit {
               private route: ActivatedRoute,
               private ConsolesService: ConsolesService,
               private GamesServices: GamesService,
-              private menuCtrl: MenuController) {
+              private menuCtrl: MenuController,
+              public toastController: ToastController,
+              private navCtrl: NavController) {
 
       //load all consoles
       this.ConsolesService.getServicesConsoles().subscribe(
@@ -66,6 +68,7 @@ export class GameFormPage implements OnInit {
 
       this.GamesServices.addServicePost(jeu).subscribe(( result => {
         this.router.navigate(['/games-list']);
+        this.AddToast(); //message toast
       }));
     }else{ //edit game
       let jeu: any;
@@ -80,6 +83,7 @@ export class GameFormPage implements OnInit {
 
       this.GamesServices.editServicePut(jeu, this.id).subscribe(( result => {
         this.router.navigate(['games-list']);
+        this.EditToast(); //message toast
       }));
     }
   }
@@ -92,6 +96,29 @@ export class GameFormPage implements OnInit {
 
   onAddGame(){
     this.router.navigate(['game-form']);
+  }
+
+  async AddToast() {
+    const toast = await this.toastController.create({
+      message: 'Jeu ajouter avec Succès.',
+      duration: 2000,
+      color: "success"
+    });
+    toast.present();
+  }
+
+  async EditToast() {
+    const toast = await this.toastController.create({
+      message: 'Jeu modifier avec Succès.',
+      duration: 2000,
+      color: "success"
+    });
+    toast.present();
+  }
+
+  backToGameList()
+  {
+    this.navCtrl.navigateBack('games-list');
   }
 
 }

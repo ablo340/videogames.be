@@ -1,20 +1,22 @@
-<ion-header padding>
+<ion-header>
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-        <ion-col>
-          <ion-button side="start" ion-button (click)="onToggleMenu()">
-            <ion-icon name="menu"></ion-icon>
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-title>Liste des jeux</ion-title>
-        </ion-col>
-        <ion-col>
-          <ion-button side="end" ion-button (click)="onAddGame()">
-            <ion-icon name="create"></ion-icon>
-          </ion-button>
-        </ion-col>
+        <ion-item>
+          <ion-col>
+            <ion-button side="start" ion-button (click)="onToggleMenu()">
+              <ion-icon name="menu"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-title>Liste des Jeux</ion-title>
+          </ion-col>
+          <ion-col>
+            <ion-button side="end" ion-button (click)="onAddGame()">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-item>
       </ion-row>
     </ion-grid>
   </ion-toolbar>
@@ -27,7 +29,7 @@
         <ion-img [src]="game.image"></ion-img>
         <ion-card-title>{{game.nom}}</ion-card-title>
         <ion-card-subtitle>{{game.Console.nom}}  -  {{game.genre}}</ion-card-subtitle>
-        <ion-text>{{game.dateDeSortie}}</ion-text>
+        <ion-text>{{game.dateDeSortie | date: 'dd/MM/yyyy'}}</ion-text>
       </ion-card-header>
 
       <ion-card-content>

@@ -1,20 +1,17 @@
-<ion-header padding>
+<ion-header>
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-        <ion-col>
-          <ion-button side="start" ion-button (click)="onToggleMenu()">
-            <ion-icon name="menu"></ion-icon>
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-title>Formulaire</ion-title>
-        </ion-col>
-        <ion-col>
-          <ion-button side="end" ion-button (click)="onAddConsole()">
-            <ion-icon name="create"></ion-icon>
-          </ion-button>
-        </ion-col>
+        <ion-item>
+          <ion-col>
+            <ion-button side="start" ion-button (click)="backToConsoleList()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-title>Ajouter une console</ion-title>
+          </ion-col>
+        </ion-item>
       </ion-row>
     </ion-grid>
   </ion-toolbar>

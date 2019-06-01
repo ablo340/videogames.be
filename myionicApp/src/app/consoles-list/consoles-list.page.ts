@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Console } from 'src/app/models/Console.model';
 import { Observable } from 'rxjs';
-import { NavController, MenuController } from '@ionic/angular';
+import { NavController, MenuController, ToastController } from '@ionic/angular';
 import { ConsolesService } from 'src/app/services/consoles.service';
 import { Router } from '@angular/router';
 
@@ -17,7 +17,8 @@ export class ConsolesListPage implements OnInit {
   constructor(
     private menuCtrl: MenuController,
     private router: Router,
-    private ConsolesService: ConsolesService) { }
+    private ConsolesService: ConsolesService,
+    public toastController: ToastController) { }
 
   ngOnInit(){ 
   }
@@ -50,7 +51,17 @@ export class ConsolesListPage implements OnInit {
   onDeleteConsole(id: any){ // delete console
     this.ConsolesService.deleteService(+id).subscribe(( result => {
       this.ionViewWillEnter();
+      this.DeleteToast();
     }));
+  }
+
+  async DeleteToast() {
+    const toast = await this.toastController.create({
+      message: 'Console supprimer avec Succès.',
+      duration: 2000,
+      color: "success"
+    });
+    toast.present();
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConsolesService } from 'src/app/services/consoles.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController, NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Console } from 'src/app/models/Console.model';
 
@@ -19,7 +19,9 @@ export class ConsoleFormPage implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private ConsolesService: ConsolesService,
-    private menuCtrl: MenuController) {
+    private menuCtrl: MenuController,
+    public toastController: ToastController,
+    private navCtrl: NavController) {
 
       if(this.id != undefined){
         this.console = new Console('', '', 0, '','', '');
@@ -52,6 +54,7 @@ export class ConsoleFormPage implements OnInit {
 
       this.ConsolesService.addServicePost(conso).subscribe(( result => {
         this.router.navigate(['console-list']);
+        this.AddToast(); //message toast
       }));
     }else{ //edit
       let conso: any;
@@ -66,18 +69,32 @@ export class ConsoleFormPage implements OnInit {
 
       this.ConsolesService.editServicePut(conso, this.id).subscribe(( result => {
         this.router.navigate(['consoles-list']);
+        this.EditToast(); //message toast
       }));
     }
   }
 
-  onToggleMenu()
-  {
-    this.menuCtrl.enable(true, 'menu');
-    this.menuCtrl.open('menu');
+  async AddToast() {
+    const toast = await this.toastController.create({
+      message: 'Console ajouter avec Succès.',
+      duration: 2000,
+      color: "success"
+    });
+    toast.present();
   }
 
-  onAddConsole(){
-    this.router.navigate(['console-form']);
+  async EditToast() {
+    const toast = await this.toastController.create({
+      message: 'Console modifier avec Succès.',
+      duration: 2000,
+      color: "success"
+    });
+    toast.present();
+  }
+
+  backToConsoleList()
+  {
+    this.navCtrl.navigateBack('consoles-list');
   }
 
 }

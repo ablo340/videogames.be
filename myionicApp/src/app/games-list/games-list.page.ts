@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Game } from '../models/Game.model';
 import { GamesService } from '../services/games.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-games-list',
@@ -17,7 +17,8 @@ export class GamesListPage implements OnInit {
   constructor(
     private router: Router,
     private menuCtrl: MenuController,
-    private GamesService: GamesService,) { }
+    private GamesService: GamesService,
+    public toastController: ToastController) { }
 
   ngOnInit(){
   }
@@ -50,7 +51,17 @@ export class GamesListPage implements OnInit {
   onDeleteGame(id: any){ // delete game
     this.GamesService.deleteService(+id).subscribe(( result => {
       this.ionViewWillEnter();
+      this.DeleteToast();
     }));
+  }
+
+  async DeleteToast() {
+    const toast = await this.toastController.create({
+      message: 'Jeu supprimer avec Succès.',
+      duration: 2000,
+      color: "success"
+    });
+    toast.present();
   }
 
 }
