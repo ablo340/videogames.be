@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-item>
+          <ion-col>
+            <ion-button side="start" ion-button (click)="backToConsoleList()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-title>Ajouter une console</ion-title>
+          </ion-col>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)= "onSubmit(form)" #form= "ngForm">
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input *ngIf="add" id="nom" name="nom" placeholder="Entrer le nom de la console" ngModel required></ion-input>
+
+      <ion-input *ngIf="!add" id="nom" name="nom" placeholder="Entrer le nom de la console" [(ngModel)]="console.nom" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fabricant</ion-label>
+      <ion-input *ngIf="add" id="fabricant" name="fabricant" placeholder="Entrer le nom du fabricant" ngModel required></ion-input>
+
+      <ion-input *ngIf="!add" id="fabricant" name="fabricant" placeholder="Entrer le nom du fabricant" [(ngModel)]="console.fabricant" required></ion-input>
+    </ion-item>
+
+      <ion-item>
+        <ion-label>Prix</ion-label>
+        <ion-input *ngIf="add" id="prix" name="prix" placeholder="Entrer le prix de la console" ngModel required></ion-input>
+  
+        <ion-input *ngIf="!add" id="prix" name="prix" placeholder="Entrer le prix de la console" [(ngModel)]="console.prix" required></ion-input>
+      </ion-item>
+
+    <ion-item>
+      <ion-label>Image</ion-label>
+      <ion-input *ngIf="add" id="image" name="image" placeholder="Entrer l'url de l'image" ngModel required></ion-input>
+
+      <ion-input *ngIf="!add" id="image" name="image" placeholder="Entrer l'url de l'image" [(ngModel)]="console.image" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Date de Sortie</ion-label>
+      <ion-datetime *ngIf="add" id="date_de_sortie" name="date_de_sortie" display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY" ngModel required></ion-datetime>
+
+      <ion-datetime *ngIf="!add" id="date_de_sortie" name="date_de_sortie" display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="console.date_de_sortie" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea *ngIf="add" id="description" rows="6" name="description" placeholder="Entrer une description" ngModel required></ion-textarea>
+
+      <ion-textarea *ngIf="!add" id="description" rows="6" name="description" placeholder="Entrer une description" [(ngModel)]="console.description" required></ion-textarea>
+    </ion-item>
+
+    <ion-button type="submit" [disabled]=form.invalid>Valider</ion-button>
+  </form>
+</ion-content>
+  

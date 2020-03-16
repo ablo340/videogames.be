@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games{% endblock %}
+
+{% block body %}
+<div class="container pt60 pb60">
+    <div class="text-center mb60">
+        <!-- Flash message -->
+        {% for flashMessage in app.session.flashBag.get('notice') %}
+        <div class="isa_success">
+            {{ flashMessage }}
+        </div>
+        {% endfor %}
+    </div>
+    <!-- game found-->
+    <div class="grid-item col-md-4">
+        <div class="card grid-item-content">
+            <div class="card-body">
+            <img src="{{ jeux.image }}" alt="">
+            <h3 class="card-title">{{ jeux.nom }}</h3>
+
+            <p class="card-text">
+                Genre : {{ jeux.genre }}
+            </p>
+
+            <p class="card-text">
+                Console : {{ jeux.console.nom }}
+            </p>
+
+            <p class="card-text">
+                Date de Sortie : {{ jeux.dateDeSortie }}
+            </p>
+
+            <a href="{{ path('game_show', {'id': jeux.id}) }}" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

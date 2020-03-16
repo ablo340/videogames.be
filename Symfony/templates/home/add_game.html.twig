@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games{% endblock %}
+
+{% block body %}
+<div class="container pt60 pb60">
+	<div class="text-center mb60">
+        {% for flashMessage in app.session.flashBag.get('notice') %}
+        <div class="isa_error">
+            {{ flashMessage }}
+        </div>
+		{% endfor %}
+		<h1>Ajouter un jeu</h1>
+	</div>
+
+    <!-- Form-->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            
+            {{ form_start(formJeu) }}
+            <div class='row'>
+                <div class="col-md form-group ">
+                    {{ form_row(formJeu.nom, {'attr': {'placeholder': "Nom du jeu"}}) }}
+                </div>
+                <div class="col-md form-group ">
+                    {{ form_row(formJeu.genre) }}
+                </div>
+                <div class="col-md form-group ">
+                    {{ form_row(formJeu.console) }}
+                </div>
+            </div>
+            <div class='row'>
+                <div class="col-md form-group ">
+                    {{ form_row(formJeu.image, {'attr': {'placeholder': "L'Url de l'image"}}) }}
+                </div>
+                <div class="col-md form-group ">
+                    {{ form_row(formJeu.dateDeSortie, {'attr': {'placeholder': "format date: j/m/a"}}) }}
+                </div>
+            </div>
+            <div class='row'>
+                <div class="col-md form-group ">
+                    {{ form_row(formJeu.commentaire, {'attr': {'placeholder': "Un commentaire sur le jeu", 'cols': "30", 'rows': "7"}} 
+                    )}}
+                </div>
+            </div>
+
+            <!-- form button -->
+            <button type="submit" class="btn btn-primary">
+                {% if editMode %}
+                    Enregistrer
+                {% else %}
+                    Ajouter le jeu
+                {% endif %}
+            </button>
+
+            {{ form_end(formJeu) }}
+        </div> 
+    </div>
+</div>
+{% endblock %} 

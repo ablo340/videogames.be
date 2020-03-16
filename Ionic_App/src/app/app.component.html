@@ -1,0 +1,26 @@
+<ion-app>
+  <ion-menu side="start" menuId="menu">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="showGames()">
+          <ion-icon start name="logo-game-controller-b"></ion-icon>
+          <ion-label> Jeux </ion-label>
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-item>
+        
+        <ion-item  (click)="showConsoles()">
+          <ion-icon name="logo-game-controller-a"></ion-icon>
+          <ion-label> Console </ion-label>
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

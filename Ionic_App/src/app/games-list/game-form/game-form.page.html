@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-item>
+          <ion-col>
+            <ion-button side="start" ion-button (click)="backToGameList()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-title>Ajouter un jeu</ion-title>
+          </ion-col>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)= "onSubmit(form)" #form= "ngForm">
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input *ngIf="add" id="nom" name="nom" placeholder="Entrer le nom du jeu" ngModel required></ion-input>
+
+      <ion-input *ngIf="!add" id="nom" name="nom" placeholder="Entrer le nom du jeu" [(ngModel)]="game.nom" required></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Genre</ion-label>
+        <ion-select *ngIf="add" value="genre" okText="Selectionner" cancelText="Annuler" id="genre" name="genre" ngModel required>
+          <ion-select-option value="Aventure">Aventure</ion-select-option>
+          <ion-select-option value="Course">Course</ion-select-option>
+          <ion-select-option value="Combat">Combat</ion-select-option>
+          <ion-select-option value="Guerre">Guerre</ion-select-option>
+          <ion-select-option value="Sport">Sport</ion-select-option>
+        </ion-select>
+
+        <ion-select *ngIf="!add" value="genre" okText="Selectionner" cancelText="Annuler" id="genre" name="genre" [(ngModel)]="game.genre" required>
+          <ion-select-option value="Aventure">Aventure</ion-select-option>
+          <ion-select-option value="Course">Course</ion-select-option>
+          <ion-select-option value="Combat">Combat</ion-select-option>
+          <ion-select-option value="Guerre">Guerre</ion-select-option>
+          <ion-select-option value="Sport">Sport</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Console</ion-label>
+      <ion-select id="console_id" name="console_id" ngModel required>
+        <ion-select-option *ngFor="let console of consoles" value= "{{console.id}}">{{console.nom}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Image</ion-label>
+      <ion-input *ngIf="add" id="image" name="image" placeholder="Entrer l'url de l'image" ngModel required></ion-input>
+
+      <ion-input *ngIf="!add" id="image" name="image" placeholder="Entrer l'url de l'image" [(ngModel)]="game.image" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Date de Sortie</ion-label>
+      <ion-datetime *ngIf="add" id="date_de_sortie" name="date_de_sortie" display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY" ngModel required></ion-datetime>
+
+      <ion-datetime *ngIf="!add" id="date_de_sortie" name="date_de_sortie" display-format="DD/MM/YYYY" picker-format="DD MMMM YYYY" [(ngModel)]="game.date_de_sortie" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Commentaire</ion-label>
+      <ion-textarea *ngIf="add" id="commentaire" rows="6" name="commentaire" placeholder="Entrer un commentaire" ngModel required></ion-textarea>
+
+      <ion-textarea *ngIf="!add" id="commentaire" rows="6" name="commentaire" placeholder="Entrer un commentaire" [(ngModel)]="game.commentaire" required></ion-textarea>
+    </ion-item>
+
+    <ion-button type="submit" [disabled]=form.invalid>Valider</ion-button>
+  </form>
+</ion-content>
